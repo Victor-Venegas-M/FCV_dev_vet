@@ -1,0 +1,50 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Paciente
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Pacientes</h1>
+
+    <div class="table-responsive">
+        <table class="table ">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especie</th>
+            <th scope="col">Raza</th>
+            <th scope="col">Tutor</th>
+            <th scope="col">Fecha Registro</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in pacientes %}
+            <tr>
+                <th scope="row">{{p.id_paciente}}</th>
+                <td>{{p.paciente}}</td>
+                <td>{{p.especie}}</td>
+                <td>{{p.raza}}</td>
+                <td>{{p.pnombre}}</td>
+                <td>{{p.f_reg}}</td>
+                <td  style="width: 220px!important">
+                    <a href="#" target="popup" onclick="window.open('pacientes_detalle/{{p.id_paciente}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                    <button class="btn btn-warning" onclick="window.location.href='pacientes_modificar/{{p.id_paciente}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-success" onclick="window.location.href = 'vacunaciones_agregar/{{p.id_paciente}}'" data-toggle="tooltip" data-placement="top" title="Registrar Vacunación"><i class="fa fa-syringe"></i></button>
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Usuarios
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Usuarios</h1>
+    <div style="display: inline-block">
+       Lista de Usuarios
+    </div>
+    {% comment %} TABLA {% endcomment %}
+<div class="table-responsive">
+    <table class="table ">
+    <thead>
+        <tr>
+        <th scope="col">Id Usuario</th>
+        <th scope="col">Id rol</th>
+        <th scope="col">Id medico</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Contraseña</th>
+        <th scope="col">Numero Api</th>
+        <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in medicos %}
+        <tr>
+            <th scope="row">{{m.id_usuario}}</th>
+            <td >{{m.id_rol}}</td>
+            <td>{{m.id_medico}}</td>
+            <td>{{m.usuario}}</td>
+            <td>{{m.passwd}}</td>
+            <td>{{m.api_keys_key}}</td>
+            <td  style="width: 220px!important">
+                {% comment %} <a href="#" target="popup" onclick="window.open('clinicas_detalle/{{m.id_medico}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a> {% endcomment %}
+                {% comment %} <button class="btn btn-warning" onclick="window.location.href='clinicas_modificar/{{m.id_medico}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button> {% endcomment %}
+                {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+</div>
+
+</div>
+
+{% endblock %}

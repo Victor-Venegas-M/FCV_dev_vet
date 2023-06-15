@@ -1,0 +1,80 @@
+{% load static %}
+<html>
+    <head></head>
+     <!-- Bootstrap -->
+     <link href="{% static 'FrWork/admin_lte/vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+<body>
+<div class="right_col" role="main">
+    <div class="table-responsive" id="datosTutor">
+        <h1>Detalle atención</h1>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td scope="col">ID:</td>
+                <td>{{detalle.id_atencion}}</td>
+            </tr>
+            <tr>
+                <td>Clínica:</td>
+                <th>{{detalle.nclinica}} </th>
+            </tr>
+            <tr>
+                <td>Medico:</td>
+                <th>{{detalle.pnombre}} {{detalle.appaterno}}</th>
+            </tr>
+            <tr>
+                <td>Fecha:</td>
+                <th>{{detalle.f_at}} </th>
+            </tr>
+            <tr>
+                <td>Paciente:</td>
+                <th>{{detalle.nombre}} </th>
+            </tr>
+            <tr>
+                <td>Servicio:</td>
+                <th>{{detalle.servicio}} </th>
+            </tr>
+            <tr>
+                <td>Anamnesis:</td>
+                <th>{{detalle.anamnesis}} </th>
+            </tr>
+            <tr>
+                <td>Resumen:</td>
+                <th>{{detalle.especie}}, {{detalle.raza}}, {{detalle.p_years}} años, {{detalle.p_meses}} meses y {{detalle.p_dias}} d&iacute;as. </th>
+            </tr>
+            <tr>
+                <td>Examen físico:</td>
+                <th>{{detalle.frec_card}} LPM,
+                    {{detalle.frec_resp}} RPM,
+                    {{detalle.temperatura}}ºC,
+                    {{detalle.peso}} Kgs,
+                    TLC {{detalle.tlp}} segundos,
+                    PC {{detalle.pc}} segundos,
+                    Condición corporal {{detalle.cond_corp}},
+                    {{detalle.porc_hid}}% de hidratación. </th>
+            </tr>
+            <tr>
+                <td>Lista de problemas:</td>
+                <th>{{detalle.lista_problemas}} </th>
+            </tr>
+            <tr>
+                <td>Observaciones:</td>
+                <th>{{detalle.observaciones}} </th>
+            </tr>
+            
+
+        </tbody>
+    </table>
+    </div>
+    <br><p>
+    <center>
+        <button class="btn btn-secondary" id="print" onclick="printContent('datosTutor')"><i class="fa fa-print"></i> Imprimir</button>
+        <br><br>
+        <button class="btn btn-danger" onclick="window.open('', '_self', ''); window.close();"><i class="fa fa-xmark"></i> Cerrar</button>
+    </center>
+</div>
+<script src="{% static 'js/print.js' %}"></script>
+</body>
+</html>

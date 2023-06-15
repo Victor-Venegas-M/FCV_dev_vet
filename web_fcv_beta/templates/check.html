@@ -1,0 +1,33 @@
+{% extends 'index_master.html' %}
+{% load static %}
+{% block body%} <body class="nav-md" onload="checkCookie()"> {% endblock %}
+{% block content %}
+    
+  <script src="{% static 'js/singin.js' %}"></script>
+    <!-- page content -->
+    <div class="right_col" role="main" id="contenido">
+        <h1>Intentando iniciar sesión: {{data.api_key}}</h1>
+        <h1>Datos de la API externa</h1>
+
+    </div>
+      
+    <script>
+        var myvar= `{{data.api_key}}`;
+        var username = `{{data.usuario}}`;
+        setCookie("user", myvar, 1);
+        alert("Bienvenido(a) "+username);
+        window.location.href="http://fcv.onecloud.cl:8080";
+    </script>
+
+      
+      
+      <footer>
+        <div class="pull-right">
+          FCV; DEV_VET - AdminPanel by <a href="mailto:a.bustos@onecloud.cl">AlexRasen</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+{% endblock %}

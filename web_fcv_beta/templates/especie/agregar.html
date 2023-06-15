@@ -1,0 +1,30 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Especie
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Especies | Agregar Especie</h1>
+    {% csrf_token %}
+    <form method="POST">
+      <div class="form-group row">
+        <label for="descripcion" class="col-4 col-form-label">Nombre Especie</label> 
+        <div class="col-8">
+          <input id="descripcion" name="descripcion" type="text" class="form-control">
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="offset-4 col-8">
+          <button name="submit" type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </form>
+        
+
+</div>
+
+{% endblock %}

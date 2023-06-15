@@ -1,0 +1,95 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Tutores
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Tutores | Agregar Tutor</h1>
+    {% csrf_token %}
+    <form method="POST">
+        <div class="form-group row">
+          <label for="pnombre" class="col-4 col-form-label">Primer Nombre</label> 
+          <div class="col-8">
+            <input id="pnombre" name="pnombre" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="snombre" class="col-4 col-form-label">Segundo Nombre</label> 
+          <div class="col-8">
+            <input id="snombre" name="snombre" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="appaterno" class="col-4 col-form-label">Apellido Paterno</label> 
+          <div class="col-8">
+            <input id="appaterno" name="appaterno" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="apmaterno" class="col-4 col-form-label">Apellido Materno</label> 
+          <div class="col-8">
+            <input id="apmaterno" name="apmaterno" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-4 col-form-label">Correo electronico</label> 
+          <div class="col-8">
+            <input id="email" name="email" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="telefono" class="col-4 col-form-label">Telefono</label> 
+          <div class="col-8">
+            <input id="telefono" name="telefono" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="direccion" class="col-4 col-form-label">Dirección</label> 
+          <div class="col-8">
+            <input id="direccion" name="direccion" type="text" class="form-control">
+          </div>
+        </div> 
+        <div class="form-group row">
+            <label for="region" class="col-4 col-form-label">Región</label> 
+            <div class="col-8">
+            <select id="region" name="region" class="custom-select" required="required" onchange="getRegionSelected()">
+                <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+                {% for r in regiones %}
+                <option value="{{ r.id_region }}">{{ r.num_rom }} - {{ r.nombre }}</option>
+                {% endfor %}
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="provincia" class="col-4 col-form-label">Provincia</label> 
+            <div class="col-8">
+            <select id="provincia" name="provincia" class="custom-select" required="required" onchange="getProvinceSelected()">
+                <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="comuna" class="col-4 col-form-label">Comuna</label> 
+            <div class="col-8"> 
+            <select id="comuna" name="comuna" class="custom-select" required="required">
+                <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+    
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Agregar</button>
+          </div>
+        </div>
+      </form>
+
+
+
+</div>
+
+{% endblock %}

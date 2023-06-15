@@ -1,0 +1,61 @@
+{% load static %}
+<html>
+    <head></head>
+     <!-- Bootstrap -->
+     <link href="{% static 'FrWork/admin_lte/vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+<body>
+<div class="right_col" role="main">
+    <div class="table-responsive" id="datosTutor">
+        <h1>Detalle Raza</h1>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td scope="col">ID:</td>
+                <td>{{clinica.id_clinica}}</td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <th>{{clinica.nombre}} </th>
+            </tr>
+            <tr>
+                <td>Telefono:</td>
+                <th>{{clinica.telefono}}</th>
+            </tr>
+            <tr>
+                <td>Direccion:</td>
+                <th>{{clinica.direccion}}</th>
+            </tr>
+            <tr>
+                <td>Comuna:</td>
+                <th>{{clinica.comuna}}</th>
+            </tr>
+            <tr>
+                <td>Provincia:</td>
+                <th>{{clinica.provincia}}</th>
+            </tr>
+            <tr>
+                <td>Regi&oacute;n:</td>
+                <th>{{clinica.region}}</th>
+            </tr>
+            <tr>
+                <td>Fecha de Registro:</td>
+                <th>{{clinica.f_registro}}</th>
+            </tr>
+            
+
+        </tbody>
+    </table>
+    </div>
+    <br><p>
+    <center>
+        <button class="btn btn-secondary" id="print" onclick="printContent('datosTutor')"><i class="fa fa-print"></i> Imprimir</button>
+        <br><br>
+        <button class="btn btn-danger" onclick="window.open('', '_self', ''); window.close();"><i class="fa fa-xmark"></i> Cerrar</button>
+    </center>
+</div>
+<script src="{% static 'js/print.js' %}"></script>
+</body>
+</html>

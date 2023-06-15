@@ -1,0 +1,146 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Atenciones
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Atenciones | Agregar Atención</h1>
+    
+    {% csrf_token %}
+    <form method="POST">
+        <div class="form-group row">
+          <label for="id_medico" class="col-4 col-form-label">Médico</label> 
+          <div class="col-8">
+              <select id="id_medico" name="id_medico" class="custom-select" required="required">
+                  <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+                  {% for m in medicos %}
+                  <option value="{{ m.id_medico }}">{{ m.id_medico }} - {{ m.pnombre }} {{ m.appaterno }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="id_paciente" class="col-4 col-form-label">Paciente</label> 
+          <div class="col-8">
+              <select id="id_paciente" name="id_paciente" class="custom-select" required="required">
+                  <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+                  {% for p in pacientes %}
+                  <option value="{{ p.id_paciente }}">{{ p.id_paciente }} - {{ p.paciente }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+        </div>
+      <div class="form-group row">
+        <label for="id_servicio" class="col-4 col-form-label">Servicio</label> 
+        <div class="col-8">
+            <select id="id_servicio" name="id_servicio" class="custom-select" required="required">
+                <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+                {% for s in servicios %}
+                <option value="{{ s.id_servicio }}">{{ s.descripcion }}</option>
+                {% endfor %}
+            </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="anamnesis" class="col-4 col-form-label">Anamnesis</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <textarea id="anamnesis" name="anamnesis" cols="40" rows="3" class="form-control" required="required">Anamnesis de prueba (Motivo de consulta)</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="mc" class="col-4 col-form-label">Peso (Kgs)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="peso" name="peso" type="number" step="any" class="form-control" required="required" value="4.5">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="frec_card" class="col-4 col-form-label">Frecuencia Cardíaca (LPM)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="frec_card" name="frec_card" type="number" class="form-control" required="required" value="60">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="frec_resp" class="col-4 col-form-label">Frecuencia Respiratoria (RPM)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="frec_resp" name="frec_resp" type="number" class="form-control" required="required" value="50">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="temp" class="col-4 col-form-label">Temperatura (ºC)</label> 
+        <div class="col-8">
+          <div class="input-group"> 
+            <input id="temp" name="temp" type="number" step="any" class="form-control" required="required" value="37.5">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="condicion_corporal" class="col-4 col-form-label">Condición Corporal</label> 
+        <div class="col-8">
+          <div class="input-group"> 
+            <input id="condicion_corporal" name="condicion_corporal" type="number" step="any" class="form-control" required="required" value="2.5">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="tlp" class="col-4 col-form-label">Tiempo de llenado capilar (Segundos)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="tlp" name="tlp" type="number"  step="any" class="form-control" required="required" value="2">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pc" class="col-4 col-form-label">Pliege Cutaneo (Segundos)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="pc" name="pc" type="number"  step="any" class="form-control" required="required" value="2">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="porc_hidratacion" class="col-4 col-form-label">Hidratación (%)</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <input id="porc_hidratacion" name="porc_hidratacion" type="number" class="form-control" required="required" value="95">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="obs" class="col-4 col-form-label">Observaciones</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <textarea id="obs" name="obs" cols="40" rows="3" class="form-control" required="required">Observaciones de prueba</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lista_problemas" class="col-4 col-form-label">Lista de Problemas</label> 
+        <div class="col-8">
+          <div class="input-group">
+            <textarea id="lista_problemas" name="lista_problemas" cols="40" rows="3" class="form-control" required="required">Lista de problemas de prueba</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-4 col-8">
+          <button name="submit" type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </form>
+
+
+</div>
+
+{% endblock %}

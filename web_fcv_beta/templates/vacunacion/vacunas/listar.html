@@ -1,0 +1,44 @@
+{% extends '../../index_master.html' %}
+{% block title %}
+FCV | Vacunas
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Vacunas | Lista vacunas</h1>
+    
+    <div class="table-responsive">
+        <table class="table ">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especie</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in vacunas %}
+            <tr>
+                <th scope="row">{{v.id_vacuna}}</th>
+                <td >{{v.nombre}}</td>
+                <td >{{v.especie}}</td>
+                <td  style="width: 220px!important">
+                    <a href="#" target="popup" onclick="window.open('vacunas_detalle/{{v.id_vacuna}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                    {% comment %} <button class="btn btn-warning" onclick="window.location.href='clinicas_modificar/{{v.id_medico}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button> {% endcomment %}
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Clínicas
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Clínicas</h1>
+    {% comment %} <div style="display: inline-block">
+        <form action="" method="POST" style="float: left">
+            {% csrf_token %}
+            <input type="text" id="keyword" name="keyword" placeholder="Buscar..." class="form-control" style="width:200px!important; display: inline-block"><button class="btn btn-success"><i class="fa fa-search"></i></button>
+        </form> 
+        <button class="btn btn-primary" onclick="window.location.href='/atencionesAdd/0'"><i class="fa fa-plus"></i> Registrar Atencion</button>
+        
+    </div> {% endcomment %}
+
+
+    {% comment %} TABLA {% endcomment %}
+    <div class="table-responsive">
+        <table class="table ">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Comuna</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Región</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in clinicas %}
+            <tr>
+                <th scope="row">{{c.id_clinica}}</th>
+                <td >{{c.nombre}}</td>
+                <td>
+                    {{ c.direccion }} 
+                </td>
+                <td>{{c.comuna}}</td>
+                <td>{{c.provincia}}</td>
+                <td>{{c.region}}</td>
+                <td>{{c.telefono}}</td>
+                <td>{{ c.f_registro}}</td>
+                <td  style="width: 220px!important">
+                    <a href="#" target="popup" onclick="window.open('clinicas_detalle/{{c.id_clinica}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                    <button class="btn btn-warning" onclick="window.location.href='clinicas_modificar/{{c.id_clinica}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button>
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Tutores
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Tutores</h1>
+    <div style="display: inline-block">
+       Lista de Tutores
+    </div>
+{% comment %} TABLA {% endcomment %}
+<div class="table-responsive">
+    <table class="table ">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo electronico</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Fecha registro</th>
+        <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tutores %}
+        <tr>
+            <th scope="row">{{t.id_tutor}}</th>
+            <td>{{t.pnombre}} {{t.snombre}} {{t.appaterno}} {{t.apmaterno}}</td>
+            <td>{{t.email}}</td>
+            <td>{{t.telefono}}</td>
+            <td>{{t.direccion}}, {{t.comuna}}, {{ t.provincia }}</td>
+            <td>{{t.f_registro}}</td>
+            <td  style="width: 220px!important">
+                <a href="#" target="popup" onclick="window.open('tutores_detalle/{{t.id_tutor}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                <button class="btn btn-warning" onclick="window.location.href='tutores_modificar/{{t.id_tutor}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button>
+                {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+</div>
+
+
+
+</div>
+
+{% endblock %}

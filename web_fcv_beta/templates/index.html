@@ -1,0 +1,39 @@
+{% extends 'index_master.html' %}
+{% block title %}
+FCV | Inicio
+{% endblock %}
+{% block content %}
+
+    <!-- page content -->
+        <div class="right_col" role="main">
+            <h1>FCV Beta | Resumen</h1>
+            
+            <!-- top tiles -->
+            <br>
+            
+          <div class="row" style="display: inline-block;" >
+            <h2>OneCloud Dev Project</h2>
+            
+            {% comment %} <div class="tile_count">
+              <div class="col-lg-3 tile_stats_count" style="width:150px">
+                <span class="count_top"><i class="fa fa-user"></i> Tutores</span>
+                <div class="count">{{tutores}} </div>
+              </div>
+              <div class="col-md-3 tile_stats_count" style="width:150px">
+                <span class="count_top"><i class="fa fa-cat"></i> Pacientes</span>
+                <div class="count">{{pacientes}} </div>
+              </div>
+              <div class="col-md-3 tile_stats_count" style="width:150px">
+                <span class="count_top"><i class="fa fa-stethoscope"></i> Atenciones</span>
+                <div class="count green">{{atenciones}} </div>
+              </div>
+              <div class="col-md-3 tile_stats_count" style="width:150px">
+                <span class="count_top"><i class="fa fa-syringe"></i> Vacunaciones</span>
+                <div class="count">{{vacunas}} </div>
+              </div>
+            </div> {% endcomment %}
+          </div>
+
+        </div>
+        <!-- /page content -->
+{% endblock %}

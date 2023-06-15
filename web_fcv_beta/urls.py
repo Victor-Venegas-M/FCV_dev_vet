@@ -1,0 +1,56 @@
+from django.contrib import admin
+from django.urls import path
+
+from django import views
+from . import views
+
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('login', views.login, name="login"),
+    path('check', views.check, name="check"),
+    path('clinicas_listar', views.clinicas_list, name="clinicas_listar"),
+    path('clinicas_agregar', views.clinicas_agregar, name="clinicas_agregar"),
+    path('clinicas_detalle/<int:id_clinica>', views.clinicas_detalle, name="clinicas_detalle"),
+    path('clinicas_modificar/<int:id_clinica>', views.clinicas_modificar, name="clinicas_modificar"),
+    path('tutores_listar', views.tutores_listar, name="tutores_listar"),
+    path('tutores_detalle/<int:id_tutor>', views.tutores_detalle, name="tutores_detalle"),
+    path('tutores_agregar', views.tutores_agregar, name="tutores_agregar"),
+    path('tutores_modificar/<int:id_tutor>', views.tutores_modificar, name="tutores_modificar"),
+    path('pacientes_listar', views.pacientes_listar, name="pacientes_listar"),
+    path('pacientes_agregar', views.pacientes_agregar, name="pacientes_agregar"),
+    path('pacientes_modificar/<int:id_paciente>', views.pacientes_modificar, name="pacientes_modificar"),
+    path('pacientes_detalle/<int:id_paciente>', views.pacientes_detalle, name="pacientes_detalle"),
+    path('atenciones_listar', views.atenciones_listar, name="atenciones_listar"),
+    path('atenciones_agregar', views.atenciones_agregar, name="atenciones_agregar"),
+    path('atenciones_modificar/<int:id_atencion>', views.atenciones_modificar, name="atenciones_modificar"),
+    path('atenciones_detalle/<int:id_atencion>', views.atenciones_detalle, name="atenciones_detalle"),
+    path('vacunaciones_listar', views.vacunaciones_listar, name="vacunaciones_listar"),
+    path('vacunaciones_agregar/<int:id_paciente>', views.vacunaciones_agregar, name="vacunaciones_agregar"),
+    path('vacunaciones_modificar/<int:idvacunacion>', views.vacunaciones_modificar, name="vacunaciones_modificar"),
+    path('vacunaciones_detalle/<int_id_vacunacion>', views.vacunaciones_detalle, name="vacunaciones_detalle"),
+    path('vacunas_listar', views.vacunas_listar, name="vacunas_listar"),
+    path('vacunas_agregar', views.vacunas_agregar, name="vacunas_agregar"),
+    path('vacunas_modificar/<int:idvacuna>', views.vacunas_modificar, name="vacunas_modificar"),
+    path('vacunas_detalle/<int:id_vacuna>', views.vacunas_detalle, name="vacunas_detalle"),
+    path('veterinarios_listar', views.veterinarios_listar, name="veterinarios_listar"),
+    path('veterinarios_agregar', views.veterinarios_agregar, name="veterinarios_agregar"),
+    path('veterinarios_modificar/<int:id_medico>', views.veterinarios_modificar, name="veterinarios_modificar"),
+    path('veterinarios_detalle/<int:id_medico>', views.veterinarios_detalle, name="veterinarios_detalle"),    
+    path('recetas_listar', views.recetas_listar, name="recetas_listar"),
+    path('recetas_agregar/<int:id_atencion>', views.recetas_agregar, name="recetas_agregar"),
+    path('receta_modificar/<int:id_receta>', views.recetas_modificar, name="recetas_modificar"),
+    path('recetas_detalle/<int:id_receta>', views.recetas_detalle, name="recetas_detalle"),
+    path('especie_listar', views.especie_listar, name="especie_listar"),
+    path('especie_agregar', views.especie_agregar, name="especie_agregar"),
+    path('especie_modificar/<int:id_especie>', views.especie_modificar, name="especie_modificar"),
+    path('especie_detalle/<int:id_especie>', views.especie_detalle, name="especie_detalle"),
+    path('razas_listar', views.razas_listar, name="razas_listar"),
+    path('razas_agregar', views.razas_agregar, name="razas_agregar"),
+    path('razas_modificar/<int:id_raza>', views.razas_modificar, name="razas_modificar"),
+    path('razas_detalle/<int:id_raza>', views.razas_detalle, name="razas_detalle"),
+    path('usuarios_listar', views.usuarios_listar, name="usuarios_listar"),
+    path('usuarios_agregar', views.usuarios_agregar, name="usuarios_agregar"),
+    path('usuarios_modificar/<int:id_usuario>', views.usuarios_modificar, name="usuarios_modificar"),
+    path('usuarios_detalle/<int:id_usuario>', views.usuarios_detalle, name="usuarios_detalle")
+]
