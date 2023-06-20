@@ -1,0 +1,97 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Tutores
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Tutores | Editar Tutor</h1>
+    {% csrf_token %}
+    <form method="POST">
+        <div class="form-group row">
+          <label for="pnombre" class="col-4 col-form-label">Primer Nombre</label> 
+          <div class="col-8">
+            <input id="pnombre" name="pnombre" type="text" class="form-control" required="required" value="{{ tutor.pnombre}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="snombre" class="col-4 col-form-label">Segundo Nombre</label> 
+          <div class="col-8">
+            <input id="snombre" name="snombre" type="text" class="form-control" required="required" value="{{ tutor.snombre}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="appaterno" class="col-4 col-form-label">Apellido Paterno</label> 
+          <div class="col-8">
+            <input id="appaterno" name="appaterno" type="text" class="form-control" required="required" value="{{ tutor.appaterno}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="apmaterno" class="col-4 col-form-label">Apellido Materno</label> 
+          <div class="col-8">
+            <input id="apmaterno" name="apmaterno" type="text" class="form-control" required="required" value="{{ tutor.apmaterno}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-4 col-form-label">Correo electronico</label> 
+          <div class="col-8">
+            <input id="email" name="email" type="email" class="form-control" required="required" value="{{ tutor.email}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="telefono" class="col-4 col-form-label">Telefono</label> 
+          <div class="col-8">
+            <input id="telefono" name="telefono" type="number" class="form-control" required="required" value="{{ tutor.telefono}}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="direccion" class="col-4 col-form-label">Dirección</label> 
+          <div class="col-8">
+            <input id="direccion" name="direccion" type="text" class="form-control" required="required" value="{{ tutor.direccion}}">
+          </div>
+        </div> 
+        <div class="form-group row">
+            <label for="region" class="col-4 col-form-label">Región</label> 
+            <div class="col-8">
+            <select id="region" name="region" class="custom-select" required="required" onchange="getRegionSelected()">
+                <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+                {% for r in regiones %}
+                <option value="{{ r.id_region }}" {% if r.id_region == tutor.id_region %} selected="true"{% endif %} >{{ r.num_rom }} - {{ r.nombre }}</option>
+                {% endfor %}
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="provincia" class="col-4 col-form-label">Provincia</label> 
+            <div class="col-8">
+            <select id="provincia" name="provincia" class="custom-select" required="required" onchange="getProvinceSelected()">
+              <option value="" disabled="disabled">- Seleccione -</option>
+              <option value="{{ tutor.id_provincia}}" selected="true">{{ tutor.provincia }}</option>                
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="comuna" class="col-4 col-form-label">Comuna</label> 
+            <div class="col-8"> 
+            <select id="comuna" name="comuna" class="custom-select" required="required">
+                <option value="" disabled="disabled">- Seleccione -</option>
+                <option value="{{ tutor.cut_comuna}}" selected="true">{{ tutor.comuna }}</option> 
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="back" onclick="history.back(); return false;" class="btn btn-warning"><i class="fa fa-angles-left"> </i>  Volver </button>
+            <button name="submit" type="submit" class="btn btn-primary">Actualizar</button>
+          </div>
+        </div>
+      </form>
+
+
+
+</div>
+
+{% endblock %}

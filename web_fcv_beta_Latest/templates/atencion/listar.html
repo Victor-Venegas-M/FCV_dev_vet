@@ -1,0 +1,57 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Atenciones
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Atenciones</h1>
+    <div style="display: inline-block">
+        <button class="btn btn-primary" onclick="window.location.href='/atenciones_agregar/0'"><i class="fa fa-plus"></i> Nueva Atención</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table ">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Tutor</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Médico</th>
+            <th scope="col">Clínica</th>
+            <th scope="col">Fecha</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in atenciones %}
+            <tr>
+                <th scope="row">{{a.id_atencion}}</th>
+                <td >{{a.id_paciente}} - {{ a.nombre }}</td>
+                <td>
+                    {{a.pntutor }} {{a.aptutor }} 
+                </td>
+                <td>{{a.observaciones}}</td>
+                <td>{{a.pnombre}} {{a.appaterno}}</td>
+                <td>{{a.nclinica}}</td>
+                <td>{{a.f_at}}</td>
+                <td  style="width: 220px!important">
+                    <a href="#" target="popup" onclick="window.open('atenciones_detalle/{{a.id_atencion}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                    <button class="btn btn-warning" onclick="window.location.href='recetas_agregar/{{a.id_atencion}}'" data-toggle="tooltip" data-placement="top" title="Agregar Rx"><i class="fa-solid fa-file-prescription"></i></button>
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

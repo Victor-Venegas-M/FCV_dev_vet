@@ -1,0 +1,54 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Tutores
+{% endblock %}
+
+{% block body%} <body class="nav-md" onload="checkCookie()"> {% endblock %}
+
+
+{% block content %}
+<div class="right_col" role="main" id="contenido" style="display: none;">
+    <h1>Tutores</h1>
+    <div style="display: inline-block">
+        <button class="btn btn-primary" onclick="window.location.href='/tutores_agregar'"><i class="fa fa-plus"></i> Nuevo Tutor</button>
+    </div>
+{% comment %} TABLA {% endcomment %}
+<div class="table-responsive">
+    <table class="table ">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo electronico</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Fecha registro</th>
+        <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tutores %}
+        <tr>
+            <th scope="row">{{t.id_tutor}}</th>
+            <td>{{t.pnombre}} {{t.snombre}} {{t.appaterno}} {{t.apmaterno}}</td>
+            <td>{{t.email}}</td>
+            <td>{{t.telefono}}</td>
+            <td>{{t.direccion}}, {{t.comuna}}, {{ t.provincia }}</td>
+            <td>{{t.f_registro}}</td>
+            <td  style="width: 220px!important">
+                <a href="#" target="popup" onclick="window.open('tutores_detalle/{{t.id_tutor}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                <button class="btn btn-success" onclick="window.location.href='pacientes_agregar/{{t.id_tutor}}'" data-toggle="tooltip" data-placement="top" title="Agregar Mascota"><i class="fa fa-dog"></i></button>
+                <button class="btn btn-warning" onclick="window.location.href='tutores_modificar/{{t.id_tutor}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+</div>
+
+
+
+</div>
+
+{% endblock %}

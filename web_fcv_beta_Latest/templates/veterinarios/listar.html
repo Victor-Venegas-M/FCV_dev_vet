@@ -1,0 +1,113 @@
+{% extends '../index_master.html' %}
+
+{% block title %}
+FCV | Veterinarios
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Veterinarios</h1>
+    {% comment %} <div style="display: inline-block">
+        <form action="" method="POST" style="float: left">
+            {% csrf_token %}
+            <input type="text" id="keyword" name="keyword" placeholder="Buscar..." class="form-control" style="width:200px!important; display: inline-block"><button class="btn btn-success"><i class="fa fa-search"></i></button>
+        </form> 
+        <button class="btn btn-primary" onclick="window.location.href='/atencionesAdd/0'"><i class="fa fa-plus"></i> Registrar Atencion</button>
+        
+    </div> {% endcomment %}
+    <div style="display: inline-block">
+        <button class="btn btn-primary" onclick="window.location.href='/veterinarios_agregar/0'"><i class="fa fa-plus"></i> Nuevo Veterinario</button>
+    </div>
+
+    {% comment %} TABLA {% endcomment %}
+    <div class="table-responsive">
+        <table class="table " id="listado">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Clínica</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Comuna</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Región</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in medicos %}
+            <tr>
+                <th scope="row">{{m.id_medico}}</th>
+                <td >{{m.pnombre}} {{m.appaterno}}</td>
+                <td >{{m.clinica}}</td>
+                <td>
+                    {{m.direccion }} 
+                </td>
+                <td>{{m.comuna}}</td>
+                <td>{{m.provincia}}</td>
+                <td>{{m.region}}</td>
+                <td>{{m.telefono}}</td>
+                <td>{{m.f_registro}}</td>
+                <td  style="width: 220px!important">
+                    <a href="#" target="popup" onclick="window.open('veterinarios_detalle/{{m.id_medico}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a>
+                    <button class="btn btn-warning" onclick="window.location.href='veterinarios_modificar/{{m.id_medico}}'" data-toggle="tooltip" data-placement="top" title="Actualizar"><i class="fa fa-refresh"></i></button>
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+
+</div>
+
+
+<script>
+    // Función para filtrar la tabla
+    function filtrarTabla() {
+        // Obtener el valor de la cookie
+        var valorCookie = obtenerValorCookie("clinica")+"";
+  
+        // Obtener todas las filas de la tabla
+        var filas = document.querySelectorAll("#listado tbody tr");
+      
+        if ( getCookie("rol_id") != 1 ) {
+
+          // Iterar sobre las filas de la tabla y ocultar aquellas que no contengan el valor de la cookie
+          for (var i = 0; i < filas.length; i++) {
+            var celda = filas[i].querySelector("td:nth-child(3)");
+    
+            if (celda && celda.textContent !== valorCookie) {
+              filas[i].style.display = "none";
+            }
+          }
+        }
+      }
+
+    // Función para obtener el valor de una cookie por su nombre
+    function obtenerValorCookie(nombre) {
+        var cookies = document.cookie.split(";");
+  
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+  
+          // Verificar si la cookie tiene el nombre buscado
+          if (cookie.indexOf(nombre + "=") === 0) {
+            return cookie.substring(nombre.length + 1, cookie.length);
+          }
+        }
+  
+        return null;
+      }
+    window.addEventListener("load", filtrarTabla);
+</script>
+
+
+{% endblock %}

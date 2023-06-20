@@ -1,0 +1,81 @@
+{% extends 'index_master.html' %}
+{% load static %}
+{% block body%} <body class="nav-md" onload="checkCookie()"> {% endblock %}
+
+  {% block menu %} {% endblock %}
+  {% block content %}
+
+  <script src="{% static 'js/singin.js' %}"></script>
+    <!-- page content -->
+    <div class="right_col" role="main" id="contenido">
+        {% comment %} <h1>Intentando iniciar sesión: {{user.pnombre}} {{user.appaterno}}</h1>
+        <h1>Datos de la API externa</h1> {% endcomment %}
+    </div>
+      
+    <script>
+      
+      var username = `{{user.pnombre}} {{user.appaterno}}`;
+      var uid= `{{user.id_usuario}}`;
+      setCookie("uid", uid, 1);
+      var rol_id= `{{user.id_rol}}`;
+      setCookie("rol_id", rol_id, 1);
+      var id_usuario = `{{ user.id_usuario }}`;
+      var id_rol = `{{ user.id_rol }}`;
+      var id_medico = `{{ user.id_medico }}`;
+      var id_clinica = `{{ user.id_clinica }}`;
+      var clinica = `{{ user.clinica }}`;
+      var pnombre = `{{ user.pnombre }}`;
+      var snombre = `{{ user.snombre }}`;
+      var appaterno = `{{ user.appaterno }}`;
+      var apmaterno = `{{ user.apmaterno }}`;
+      var email = `{{ user.email }}`;
+      var telefono = `{{ user.telefono }}`;
+      var direccion = `{{ user.direccion }}`;
+      var comuna = `{{ user.comuna }}`;
+      var cut_comuna = `{{ user.cut_comuna }}`;
+      var provincia = `{{ user.provincia }}`;
+      var id_provincia = `{{ user.id_provincia }}`;
+      var region = `{{ user.region }}`;
+      var id_region = `{{ user.id_region }}`;
+      var f_registro = `{{ user.f_registro }}`;
+      var usuario = `{{ user.usuario }}`;
+      var passwd = `{{ user.passwd }}`;
+      var api_key = `{{ user.api_key }}`;
+      var id_estado_key  = `{{ user.id_estado_key }}`;
+      setCookie("id_usuario", id_usuario, 1);
+      setCookie("id_rol", id_rol, 1);
+      setCookie("id_medico", id_medico, 1);
+      setCookie("id_clinica", id_clinica, 1);
+      setCookie("clinica", clinica, 1);
+      setCookie("pnombre", pnombre, 1);
+      setCookie("snombre", snombre, 1);
+      setCookie("appaterno", appaterno, 1);
+      setCookie("apmaterno", apmaterno, 1);
+      setCookie("email", email, 1);
+      setCookie("telefono", telefono, 1);
+      setCookie("direccion", direccion, 1);
+      setCookie("comuna", comuna, 1);
+      setCookie("cut_comuna", cut_comuna, 1);
+      setCookie("provincia", provincia, 1);
+      setCookie("id_provincia", id_provincia, 1);
+      setCookie("region", region, 1);
+      setCookie("id_region", id_region, 1);
+      setCookie("f_registro", f_registro, 1);
+      setCookie("usuario", usuario, 1);
+      setCookie("passwd", passwd, 1);
+      setCookie("api_key", api_key, 1);
+      setCookie("id_estado_key", id_estado_key, 1);
+
+      window.location.href="http://fcv.onecloud.cl:8080";
+    </script>
+      
+      <footer>
+        <div class="pull-right">
+          FCV; DEV_VET - AdminPanel by <a href="mailto:a.bustos@onecloud.cl">AlexRasen</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+{% endblock %}
