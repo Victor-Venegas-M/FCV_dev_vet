@@ -4,4 +4,5 @@ Integrantes:
 - Víctor Venegas
 - Francisco Espinoza
 - Patricio Bustos
-Analistas programadores.
+- Analistas programadores.
+
