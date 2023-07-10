@@ -1,0 +1,114 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Agenda
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+  {% comment %} <h1>Veterinarios</h1> {% endcomment %}
+  <div style="display: inline-block">
+     {% comment %} Agregar Veterinario {% endcomment %}
+  </div>
+
+    <h1>Agenda | Agregar Cita</h1>
+    {% csrf_token %}
+      <form method="POST">
+        <div class="form-group row">
+          <label for="id_clinica" class="col-4 col-form-label">Clinica</label> 
+          <div class="col-8">
+          <select id="id_clinica" name="id_clinica" class="custom-select" required="required">
+              <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+              {% for c in clinicas %}
+              <option value="{{c.id_clinica}}" {% if c.id_clinica == id_clinica %} selected="true" {% endif %}>{{c.nombre}}</option>
+              {% endfor %}
+          </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="servicio" class="col-4 col-form-label">Servicio</label> 
+          <div class="col-8">
+          <select id="servicio" name="servicio" class="custom-select" required="required">
+              <option value="" selected="true" disabled="disabled">- Seleccione -</option>
+              {% for s in servicios %}
+              <option value="{{ s.id_servicio }}">{{ s.descripcion }}</option>
+              {% endfor %}
+          </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="nombre" class="col-4 col-form-label">Nombre</label> 
+          <div class="col-8">
+          <input id="nombre" name="nombre" type="text" class="form-control" required="required">
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <label for="telefono" class="col-4 col-form-label">Telefono</label> 
+          <div class="col-8">
+          <input id="telefono" name="telefono" type="number" class="form-control" required="required">
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <label for="email" class="col-4 col-form-label">Correo</label> 
+          <div class="col-8">
+          <input id="email" name="email" type="email" class="form-control" required="required">
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <label for="fecha" class="col-4 col-form-label">Fecha</label> 
+          <div class="col-8">
+            <input id="fecha" name="fecha" type="datetime-local" class="form-control" required="required">
+          </div>
+        </div> 
+
+
+
+      
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+              <button name="back" onclick="history.back(); return false;" class="btn btn-warning"><i class="fa fa-angles-left"> </i>  Volver </button>
+          <button name="submit" type="submit" class="btn btn-primary">Añadir</button>
+          </div>
+        </div>
+      </form>
+
+</div>
+
+
+<script>
+  // Función para filtrar las opciones del select
+  function filtrarSelect() {
+    // Obtener el valor de la cookie
+    var valorCookie = getCookie("id_clinica");
+
+    // Obtener el select
+    var select = document.getElementById("id_clinica");
+
+    // Obtener todas las opciones del select
+    var opciones = select.getElementsByTagName("option");
+
+    if ( getCookie("rol_id") != 1 ) {
+      // Iterar sobre las opciones del select y ocultar aquellas que no coincidan con el valor de la cookie
+      for (var i = 0; i < opciones.length; i++) {
+        var opcion = opciones[i];
+
+        if (opcion.value !== valorCookie) {
+          opcion.style.display = "none";
+        }
+      }
+    }
+
+
+  }
+  // Ejecutar el filtro del select al cargar la página
+  window.addEventListener("load", filtrarSelect);
+</script>
+
+{% endblock %}

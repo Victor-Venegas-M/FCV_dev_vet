@@ -1,0 +1,57 @@
+{% extends '../index_master.html' %}
+{% block title %}
+FCV | Agenda
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="right_col" role="main">
+    <h1>Agenda</h1>
+    <div style="display: inline-block">
+        <button class="btn btn-primary" onclick="window.location.href='/agenda_agregar/0'"><i class="fa fa-plus"></i> Nuevo Agendamiento</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table ">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Clínica</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col" style="width: 200px!important">Acci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in citas %}
+            <tr>
+                <th scope="row">{{c.id_agenda}}</th>
+                <td >{{ c.clinica }}</td>
+                <td>
+                    {{ c.servicio }} 
+                </td>
+                <td>{{c.solicitante}}</td>
+                <td>{{ c.telefono }}</td>
+                <td>{{ c.correo }}</td>
+                <td>{{ c.f_cita }}</td>
+                <td  style="width: 220px!important">
+                    {% comment %} <a href="#" target="popup" onclick="window.open('atenciones_detalle/{{a.id_atencion}}','popup','width=600,height=650'); return false;"><button class="btn btn-primary" style:"height: 25px" data-toggle="tooltip" data-placement="top" title="Ver detalle"><i class="fa fa-eye"></i></button></a> {% endcomment %}
+                    {% comment %} <button class="btn btn-warning" onclick="window.location.href='recetas_agregar/{{a.id_atencion}}'" data-toggle="tooltip" data-placement="top" title="Agregar Rx"><i class="fa-solid fa-file-prescription"></i></button> {% endcomment %}
+                    {% comment %} <button class="btn btn-danger" onclick="window.location.href='atencionesDelete/{{a.nro_atencion}}'" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+    </div>
+
+
+
+</div>
+
+{% endblock %}
